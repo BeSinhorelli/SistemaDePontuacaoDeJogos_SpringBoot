@@ -29,8 +29,6 @@ public class ScoreService {
 public Score atualizar(int id, Score scoreAtualizado) {
     return scoreRepository.findById(id).map(score -> {
         score.setScore(scoreAtualizado.getScore());
-        score.setJogo(scoreAtualizado.getJogo());       // corrigido
-        score.setPlayer(scoreAtualizado.getPlayer());   // corrigido
         score.setData(scoreAtualizado.getData());
         return scoreRepository.save(score);
     }).orElse(null);

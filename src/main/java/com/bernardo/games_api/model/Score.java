@@ -12,37 +12,44 @@ import java.util.Date;
  * @author berna
  */
 @Entity
+
+@IdClass(ScoreId.class)
 public class Score {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long gameId;
 
-    private int id_score, score;
-    @Temporal(TemporalType.DATE)
+    @Id
+    private Long playerId;
+
+    private int score;
     private Date data;
-    @ManyToOne
-    @JoinColumn(name = "id_player")
-    private Player player;
 
-    @ManyToOne
-    @JoinColumn(name = "id_game")
-    private Jogo jogo;
+    // getters e setters
 
-    public int getId_score() {
-        return id_score;
-    }
+        public Long getGameId() {
+            return gameId;
+        }
 
-    public void setId_score(int id_score) {
-        this.id_score = id_score;
-    }
+        public void setGameId(Long gameId) {
+            this.gameId = gameId;
+        }
 
-    public int getScore() {
-        return score;
-    }
+        public Long getPlayerId() {
+            return playerId;
+        }
 
-    public void setScore(int score) {
-        this.score = score;
-    }
+        public void setPlayerId(Long playerId) {
+            this.playerId = playerId;
+        }
+
+        public int getScore() {
+            return score;
+        }
+
+        public void setScore(int score) {
+            this.score = score;
+        }
 
     public Date getData() {
         return data;
@@ -51,22 +58,5 @@ public class Score {
     public void setData(Date data) {
         this.data = data;
     }
-
-    public Player getPlayer() {
-        return player;
+        
     }
-
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-
-    public Jogo getJogo() {
-        return jogo;
-    }
-
-    public void setJogo(Jogo jogo) {
-        this.jogo = jogo;
-    }
-    
-    
-}
