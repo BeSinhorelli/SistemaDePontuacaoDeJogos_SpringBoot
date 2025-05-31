@@ -38,4 +38,5 @@ public Score atualizar(int id, Score scoreAtualizado) {
     public void deletar(int id) {
         scoreRepository.deleteById(id);
     }
+
 }

@@ -1,10 +1,13 @@
+package com.bernardo.games_api.controller;
 
 import com.bernardo.games_api.model.Score;
 import com.bernardo.games_api.service.ScoreService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/scores")
@@ -24,8 +27,10 @@ public class ScoreController {
     }
 
     @GetMapping("/{id}")
-    public Score buscarPorId(@PathVariable int id) {
-        return scoreService.buscarPorId(id).orElse(null);
+    public ResponseEntity<Score> buscarPorId(@PathVariable int id) {
+        Optional<Score> score = scoreService.buscarPorId(id);
+        return score.map(ResponseEntity::ok)
+                    .orElse(ResponseEntity.notFound().build());
     }
 
     @PutMapping("/{id}")

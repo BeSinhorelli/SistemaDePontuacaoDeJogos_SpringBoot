@@ -72,14 +72,15 @@
     </dependencies>
 
     <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <mainClass>@SpringBootApplication</mainClass>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+    <plugins>
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <version>3.2.0</version> <!-- ou a versão correspondente ao seu projeto -->
+            <configuration>
+                <mainClass>GamesApiApplication</mainClass> <!-- coloque aqui o nome completo da sua classe principal -->
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
 </project>
