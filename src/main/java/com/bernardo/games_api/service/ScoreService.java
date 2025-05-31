@@ -1,13 +1,43 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.bernardo.games_api.service;
 
-/**
- *
- * @author berna
- */
+import com.bernardo.games_api.model.Score;
+import com.bernardo.games_api.repository.ScoreRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
 public class ScoreService {
-    
+
+    @Autowired
+    private ScoreRepository scoreRepository;
+
+    public Score salvar(Score score) {
+        return scoreRepository.save(score);
+    }
+
+    public List<Score> listarTodos() {
+        return scoreRepository.findAll();
+    }
+
+    public Optional<Score> buscarPorId(int id) {
+        return scoreRepository.findById(id);
+    }
+
+public Score atualizar(int id, Score scoreAtualizado) {
+    return scoreRepository.findById(id).map(score -> {
+        score.setScore(scoreAtualizado.getScore());
+        score.setJogo(scoreAtualizado.getJogo());       // corrigido
+        score.setPlayer(scoreAtualizado.getPlayer());   // corrigido
+        score.setData(scoreAtualizado.getData());
+        return scoreRepository.save(score);
+    }).orElse(null);
+}
+
+
+    public void deletar(int id) {
+        scoreRepository.deleteById(id);
+    }
 }

@@ -1,13 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.bernardo.games_api.repository;
 
-/**
- *
- * @author berna
- */
-public class JogoRepository {
-    
+import com.bernardo.games_api.model.Jogo;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface JogoRepository extends JpaRepository<Jogo, Integer> {
 }
